@@ -1,4 +1,5 @@
 import GithubProjects from "./components/GithubProjects";
+import ContactForm from "./components/ContactForm";
 
 export default function Home() {
   return (
@@ -66,6 +67,33 @@ export default function Home() {
         <GithubProjects />
         
       </section>
+
+      {/* SEZIONE CONTATTI */}
+      <section id="contatti" className="container mt-5 pt-5 pb-5">
+        <div className="row justify-content-center">
+          <div className="col-md-8 text-center mb-4">
+            <h2 className="fw-bold">Contattami</h2>
+            <p className="text-muted">
+              Hai un'idea per un progetto o vuoi semplicemente farmi un saluto? Compila il form qui sotto!
+            </p>
+          </div>
+        </div>
+        <div className="row justify-content-center">
+          <div className="col-md-6">
+            
+            {/* Iniezione del form */}
+            <ContactForm />
+
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="bg-dark text-white text-center py-4 mt-5">
+        <div className="container">
+          <p className="mb-0">© {new Date().getFullYear()} Antonio Verno. Tutti i diritti riservati.</p>
+        </div>
+      </footer>
     </>
   );
 }
