@@ -1,15 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
   const [testo, setTesto] = useState("");
   
-  // Creazuibe della memoria della chat!
+  // Memoria della chat
   const [messaggi, setMessaggi] = useState<{role: string, content: string}[]>([]);
   const [inCaricamento, setInCaricamento] = useState(false);
   const [errore, setErrore] = useState(false);
+  
+  // Riferimento per l'auto-scroll dei messaggi
+  const chatBottomRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      chatBottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messaggi, inCaricamento, isOpen]);
 
   const inviaMessaggio = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); 
@@ -48,35 +57,72 @@ export default function ChatBot() {
 
   return (
     <>
+      {/* BOTTONE FLUTTUANTE SEMPRE IN PRIMO PIANO */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="btn btn-primary rounded-circle shadow-lg d-flex align-items-center justify-content-center"
-        style={{ position: "fixed", bottom: "30px", right: "30px", width: "65px", height: "65px", zIndex: 1000, fontSize: "24px" }}
+        style={{ 
+          position: "fixed", 
+          bottom: "24px", 
+          right: "24px", 
+          width: "60px", 
+          height: "60px", 
+          zIndex: 9999, 
+          fontSize: "22px",
+          transition: "transform 0.2s ease"
+        }}
+        aria-label="Apri chat assistente"
       >
         {isOpen ? "✖" : "💬"}
       </button>
 
+      {/* FINESTRA DELLA CHAT FLUTTUANTE */}
       {isOpen && (
         <div
-          className="card shadow-lg border-0"
-          style={{ position: "fixed", bottom: "110px", right: "30px", width: "350px", height: "450px", zIndex: 1000, display: 'flex', flexDirection: 'column' }}
+          className="card shadow-lg border-0 rounded-4"
+          style={{ 
+            position: "fixed", 
+            bottom: "95px", 
+            right: "24px", 
+            width: "360px", 
+            maxWidth: "calc(100vw - 48px)",
+            height: "480px", 
+            zIndex: 9999, 
+            display: 'flex', 
+            flexDirection: 'column',
+            overflow: 'hidden'
+          }}
         >
-          <div className="card-header bg-primary text-white fw-bold d-flex justify-content-between align-items-center rounded-top">
-            Assistente CV AI
+          {/* HEADER CHAT */}
+          <div className="card-header bg-primary text-white fw-bold d-flex justify-content-between align-items-center py-3 px-4">
+            <div className="d-flex align-items-center gap-2">
+              <span className="fs-5">🤖</span>
+              <span>Assistente AI - Dott. Verno</span>
+            </div>
+            <button 
+              type="button" 
+              className="btn-close btn-close-white small" 
+              onClick={() => setIsOpen(false)}
+            ></button>
           </div>
           
-          <div className="card-body overflow-auto bg-body-tertiary" style={{ flexGrow: 1 }}>
+          {/* CORPO MESSAGGI */}
+          <div className="card-body overflow-auto bg-body-tertiary p-3" style={{ flexGrow: 1 }}>
             {messaggi.length === 0 && (
-              <p className="text-muted small text-center mt-3">
-                Ciao! Sono l&apos;assistente virtuale di Antonio. Chiedimi pure informazioni sulle sue competenze o progetti!
-              </p>
+              <div className="text-center my-4">
+                <p className="text-body-secondary small mb-0">
+                  👋 Ciao! Sono l&apos;assistente AI di Antonio Verno. Chiedimi pure informazioni su formazione, esperienze enterprise o competenze tecniche!
+                </p>
+              </div>
             )}
             
             {messaggi.map((m, index) => (
               <div key={index} className={`mb-3 ${m.role === "user" ? "text-end" : "text-start"}`}>
                 <div
-                  className={`d-inline-block p-2 rounded shadow-sm ${
-                    m.role === "user" ? "bg-primary text-white" : "bg-secondary text-white"
+                  className={`d-inline-block p-3 rounded-4 shadow-sm ${
+                    m.role === "user" 
+                      ? "bg-primary text-white" 
+                      : "bg-body border border-secondary border-opacity-10 text-body"
                   }`}
                   style={{ maxWidth: "85%", textAlign: "left", fontSize: "0.9rem" }}
                 >
@@ -87,30 +133,35 @@ export default function ChatBot() {
 
             {inCaricamento && (
               <div className="mb-3 text-start">
-                 <div className="d-inline-block p-2 rounded shadow-sm bg-secondary text-white fst-italic" style={{ fontSize: "0.8rem" }}>
-                   Sto scrivendo...
-                 </div>
+                <div className="d-inline-block p-2 px-3 rounded-pill bg-body border border-secondary border-opacity-10 text-body-secondary small fst-italic">
+                  Sto scrivendo... ✍️
+                </div>
               </div>
             )}
             
             {errore && (
-              <div className="text-danger small text-center mt-3 fw-bold">
-                Ops! Errore di connessione.
+              <div className="text-danger small text-center mt-3 fw-semibold">
+                Ops! Errore di connessione con l&apos;AI.
               </div>
             )}
+            
+            <div ref={chatBottomRef} />
           </div>
           
-          <div className="card-footer bg-body p-2 rounded-bottom">
+          {/* INPUT FORM */}
+          <div className="card-footer bg-body border-top border-secondary border-opacity-10 p-3">
             <form onSubmit={inviaMessaggio} className="d-flex gap-2">
               <input
-                className="form-control form-control-sm"
+                className="form-control form-control-sm rounded-3 py-2"
                 value={testo} 
                 onChange={(e) => setTesto(e.target.value)}
-                placeholder="Scrivi una domanda..."
+                placeholder="Fai una domanda sul CV..."
                 disabled={inCaricamento}
                 required
               />
-              <button type="submit" className="btn btn-primary btn-sm fw-bold" disabled={inCaricamento}>Invia</button>
+              <button type="submit" className="btn btn-primary btn-sm fw-bold px-3 rounded-3" disabled={inCaricamento}>
+                Invia
+              </button>
             </form>
           </div>
         </div>

@@ -71,3 +71,17 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
   gap: 1.5rem !important;
 }
+
+.chatbot-btn-fixed {
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 24px !important;
+  z-index: 99999 !important;
+}
+
+.chatbot-card-fixed {
+  position: fixed !important;
+  bottom: 95px !important;
+  right: 24px !important;
+  z-index: 99999 !important;
+}
