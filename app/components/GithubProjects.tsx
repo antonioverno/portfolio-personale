@@ -19,7 +19,7 @@ export default async function GithubProjects() {
       {/*interfaccia Repo invece di "any" */}
       {repos.map((repo: Repo) => (
         <div className="col-md-4" key={repo.id}>
-          <div className="card h-100 shadow-sm border-0 bg-light">
+          <div className="card h-100 shadow-sm border-0 bg-body-tertiary">
             <div className="card-body">
               <h5 className="card-title fw-bold text-capitalize">
                 {repo.name.replace(/-/g, ' ')}

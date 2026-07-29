@@ -1,5 +1,7 @@
 import GithubProjects from "./components/GithubProjects";
 import ContactForm from "./components/ContactForm";
+import ThemeToggle from "./components/ThemeToggle";
+import ChatBot from "./components/ChatBot";
 
 export default function Home() {
   return (
@@ -17,6 +19,10 @@ export default function Home() {
               <li className="nav-item"><a className="nav-link" href="#progetti">Progetti</a></li>
               <li className="nav-item"><a className="nav-link" href="#contatti">Contatti</a></li>
             </ul>
+            
+            {/* Bottone della Dark Mode */}
+            <ThemeToggle />
+            
           </div>
         </div>
       </nav>
@@ -52,7 +58,7 @@ export default function Home() {
             </div>
           </div>
           <div className="col-md-6 text-center mt-4 mt-md-0">
-             <div className="bg-light rounded mx-auto d-flex align-items-center justify-content-center shadow-sm" style={{width: '250px', height: '250px'}}>
+             <div className="bg-body-tertiary rounded mx-auto d-flex align-items-center justify-content-center shadow-sm" style={{width: '250px', height: '250px'}}>
                <span className="text-muted">La tua foto qui</span>
              </div>
           </div>
@@ -94,6 +100,7 @@ export default function Home() {
           <p className="mb-0">© {new Date().getFullYear()} Antonio Verno. Tutti i diritti riservati.</p>
         </div>
       </footer>
+      <ChatBot />
     </>
   );
 }

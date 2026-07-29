@@ -10,14 +10,17 @@ export default function ContactForm() {
     e.preventDefault(); 
     setInCaricamento(true);
 
-    // Recuperiamo i dati scritti dall'utente nel form
+    // Recupero dei dati scritti dall'utente nel form
     const formData = new FormData(e.currentTarget);
-    
-    // Chiave Web3forms
-    formData.append("access_key", "INSERISCI CHIAVE");
+
+    // Recupero della chiave dal file .env.local in modo sicuro
+    formData.append(
+    "access_key", 
+    process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || ""
+    );
 
     try {
-      // Inviamo i dati all'API di Web3Forms
+      // Invio i dati all'API di Web3Forms
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: formData
@@ -48,7 +51,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 border rounded shadow-sm bg-white">
+    <form onSubmit={handleSubmit} className="p-4 border rounded shadow-sm bg-body-tertiary">
       <div className="mb-3">
         <label htmlFor="nome" className="form-label fw-bold">Il tuo Nome</label>
         {/* L'attributo name="name" è obbligatorio per far capire all'API che questo è il nome */}
