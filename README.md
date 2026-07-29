@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Antonio Verno, M.Sc. - Interactive Portfolio & AI Assistant
 
-## Getting Started
+An interactive and modern personal portfolio built with [Next.js](https://nextjs.org) (bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app)).
 
-First, run the development server:
+It features a sleek **Bento Grid** design layout, dynamic GitHub repository fetching, theme customization, and an integrated **AI Chatbot** (powered by Groq & LLaMA 3.3) trained on my professional background and enterprise experience.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ⚡ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework:** [Next.js](https://nextjs.org/) (App Router)
+- **Styling:** [Bootstrap 5](https://getbootstrap.com/) + Custom CSS (Bento Grid Layout)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **AI Integration:** [Groq Cloud API](https://groq.com/) (`llama-3.3-70b-versatile`)
+- **Font Optimization:** [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) (Geist font family)
+- **Deployment:** [Vercel Platform](https://vercel.com/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## ✨ Key Features
 
-To learn more about Next.js, take a look at the following resources:
+- **📐 Responsive Bento Grid Layout:** Organized information cards designed to auto-fit widescreen monitors and mobile devices seamlessly.
+- **🤖 Integrated AI Assistant:** A floating chatbot ready to assist recruiters and visitors with real-time inquiries regarding my education at Politecnico di Bari, career achievements, and enterprise projects (e.g., Poste Italiane, WindTre, Maserati).
+- **🌙 Light / Dark Mode Toggle:** Switch themes dynamically with user preference retention.
+- **📁 Dynamic GitHub Integration:** Automatically fetches and presents public repositories.
+- **📄 Curriculum Download & Contact Form:** Direct access to download my PDF resume and get in touch.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠️ Environment Configuration (.env.local)
 
-## Deploy on Vercel
+Before launching the project, create a `.env.local` file in the root directory and define the required variables:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```env
+GROQ_API_KEY="your_groq_api_key_here"
+SYSTEM_PROMPT="Detailed instructions and CV context passed to the AI model..."
