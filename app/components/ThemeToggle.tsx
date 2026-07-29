@@ -11,6 +11,7 @@ export default function ThemeToggle() {
     
     // Se c'è salvato "dark" in memoria, oppure se il computer dell'utente è già impostato su tema scuro di default
     if (savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsDark(true);
       document.documentElement.setAttribute("data-bs-theme", "dark");
     } else {

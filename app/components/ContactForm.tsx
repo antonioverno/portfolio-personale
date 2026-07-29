@@ -31,6 +31,7 @@ export default function ContactForm() {
       } else {
         alert("Si è verificato un errore durante l'invio. Riprova più tardi.");
       }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       alert("Errore di connessione. Verifica la tua rete.");
     } finally {

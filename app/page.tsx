@@ -80,7 +80,7 @@ export default function Home() {
           <div className="col-md-8 text-center mb-4">
             <h2 className="fw-bold">Contattami</h2>
             <p className="text-muted">
-              Hai un'idea per un progetto o vuoi semplicemente farmi un saluto? Compila il form qui sotto!
+              Hai un&apos;idea per un progetto o vuoi semplicemente farmi un saluto? Compila il form qui sotto!
             </p>
           </div>
         </div>

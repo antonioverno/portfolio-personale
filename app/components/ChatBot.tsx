@@ -38,6 +38,7 @@ export default function ChatBot() {
       const data = await res.json();
       setMessaggi([...cronologia, { role: 'assistant', content: data.text }]);
       
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       setErrore(true);
     } finally {
@@ -67,7 +68,7 @@ export default function ChatBot() {
           <div className="card-body overflow-auto bg-body-tertiary" style={{ flexGrow: 1 }}>
             {messaggi.length === 0 && (
               <p className="text-muted small text-center mt-3">
-                Ciao! Sono l'assistente virtuale di Antonio. Chiedimi pure informazioni sulle sue competenze o progetti!
+                Ciao! Sono l&apos;assistente virtuale di Antonio. Chiedimi pure informazioni sulle sue competenze o progetti!
               </p>
             )}
             
