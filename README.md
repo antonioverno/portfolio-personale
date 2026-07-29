@@ -1,4 +1,4 @@
-# 🚀 Antonio Verno, M.Sc. - Interactive Portfolio & AI Assistant
+# 🚀 Antonio Verno - Interactive Portfolio & AI Assistant
 
 An interactive and modern personal portfolio built with [Next.js](https://nextjs.org) (bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app)).
 
@@ -32,5 +32,6 @@ It features a sleek **Bento Grid** design layout, dynamic GitHub repository fetc
 Before launching the project, create a `.env.local` file in the root directory and define the required variables:
 
 ```env
+NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY="your_web3forms_access_key_here"
 GROQ_API_KEY="your_groq_api_key_here"
 SYSTEM_PROMPT="Detailed instructions and CV context passed to the AI model..."
