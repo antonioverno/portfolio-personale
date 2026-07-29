@@ -13,7 +13,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// 1. MODIFICA I METADATA QUI: Questo è ciò che leggeranno i motori di ricerca e le schede del browser
 export const metadata: Metadata = {
   title: "Antonio Verno | Portfolio Personale",
   description: "Portfolio personale di Antonio Verno, sviluppatore software. Scopri i miei progetti e le mie competenze.",
@@ -25,12 +24,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // 2. Linqua Impostata su "it"
     <html
       lang="it"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="d-flex flex-column min-vh-100 bg-body text-body">
+        {children}
+      </body>
     </html>
   );
 }

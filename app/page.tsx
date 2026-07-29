@@ -6,100 +6,227 @@ import ChatBot from "./components/ChatBot";
 export default function Home() {
   return (
     <>
-      {/* NAVBAR */}
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <div className="container">
-          <a className="navbar-brand fw-bold" href="#">Antonio Verno</a>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      {/* NAVBAR BENTO STYLE */}
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top border-bottom border-secondary border-opacity-25 py-3">
+        <div className="container-bento px-3 px-md-4 w-100">
+          <a className="navbar-brand fw-bold fs-4" href="#">
+            Antonio<span className="text-primary">.dev</span>
+          </a>
+          <button className="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ms-auto">
+            <ul className="navbar-nav ms-auto align-items-lg-center gap-lg-2">
               <li className="nav-item"><a className="nav-link" href="#chi-sono">Chi Sono</a></li>
+              <li className="nav-item"><a className="nav-link" href="#esperienze">Esperienze</a></li>
               <li className="nav-item"><a className="nav-link" href="#progetti">Progetti</a></li>
               <li className="nav-item"><a className="nav-link" href="#contatti">Contatti</a></li>
             </ul>
-            
-            {/* Bottone della Dark Mode */}
-            <ThemeToggle />
-            
+            <div className="ms-lg-3 mt-2 mt-lg-0">
+              <ThemeToggle />
+            </div>
           </div>
         </div>
       </nav>
 
-      {/* HERO SECTION */}
-      <main className="container mt-5 pt-5 text-center">
-        <h1 className="display-3 fw-bold mb-3">Ciao, sono Antonio.</h1>
-        <h2 className="text-muted fs-4 mb-4">
-          Sviluppatore Software | Costruisco soluzioni web moderne
-        </h2>
-        <div className="mt-4">
-          <a href="#progetti" className="btn btn-primary btn-lg me-3">I Miei Progetti</a>
-          <a href="#contatti" className="btn btn-outline-dark btn-lg">Contattami</a>
-        </div>
-      </main>
-
-      {/* SEZIONE CHI SONO */}
-      <section id="chi-sono" className="container mt-5 pt-5">
-        <div className="row align-items-center">
-          <div className="col-md-6">
-            <h2 className="fw-bold mb-3">Chi Sono</h2>
-            <p className="lead">
-              Sono uno sviluppatore appassionato. Mi piace risolvere problemi complessi
-              e creare applicazioni web veloci e funzionali.
-            </p>
-            <p>Le tecnologie che utilizzo maggiormente:</p>
-            <div className="d-flex flex-wrap gap-2">
-              <span className="badge bg-secondary">JavaScript</span>
-              <span className="badge bg-secondary">Next.js</span>
-              <span className="badge bg-secondary">Bootstrap</span>
-              <span className="badge bg-secondary">React</span>
-              <span className="badge bg-secondary">Git</span>
+      <main className="container-bento px-3 px-md-4 my-4 my-lg-5">
+        
+        {/* ==================== BENTO GRID PRINCIPALE ==================== */}
+        <div className="row g-3 g-md-4">
+          
+          {/* TESSERA 1: HERO PRINCIPALE */}
+          <div className="col-12 col-lg-8">
+            <div className="p-4 p-md-5 bg-body-tertiary border border-secondary border-opacity-25 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
+              <div>
+                <span className="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-3 py-2 rounded-pill fs-6 mb-3">
+                  🟢 Full Stack IT Consultant
+                </span>
+                <h1 className="display-4 fw-bold mb-3">
+                  Ciao, sono Antonio Verno<span className="text-primary">.</span>
+                </h1>
+                <p className="fs-5 text-body-secondary leading-relaxed mb-4">
+                  Dottore Magistrale in Ingegneria Informatica & Full Stack Software Developer. Specializzato in architetture enterprise, microservizi backend (Java, Spring Boot) e soluzioni frontend moderne (Angular, React, Next.js).
+                </p>
+              </div>
+              <div className="d-flex flex-wrap gap-3">
+                <a href="#progetti" className="btn btn-primary px-4 py-2 fw-semibold rounded-3">
+                  I Miei Progetti
+                </a>
+                <a href="/CV_Antonio_Verno.pdf" target="_blank" download className="btn btn-outline-primary px-4 py-2 fw-semibold rounded-3">
+                  📄 Scarica CV PDF
+                </a>
+                <a href="#contatti" className="btn btn-outline-secondary px-4 py-2 fw-semibold rounded-3">
+                  Contattami
+                </a>
+              </div>
             </div>
           </div>
-          <div className="col-md-6 text-center mt-4 mt-md-0">
-             <div className="bg-body-tertiary rounded mx-auto d-flex align-items-center justify-content-center shadow-sm" style={{width: '250px', height: '250px'}}>
-               <span className="text-muted">La tua foto qui</span>
-             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* SEZIONE PROGETTI */}
-      <section id="progetti" className="container mt-5 pt-5 pb-5">
-        <h2 className="fw-bold mb-4 text-center">I Miei Progetti</h2>
-        
-        {/* Iniezione Componente gitHub */}
-        <GithubProjects />
-        
-      </section>
-
-      {/* SEZIONE CONTATTI */}
-      <section id="contatti" className="container mt-5 pt-5 pb-5">
-        <div className="row justify-content-center">
-          <div className="col-md-8 text-center mb-4">
-            <h2 className="fw-bold">Contattami</h2>
-            <p className="text-muted">
-              Hai un&apos;idea per un progetto o vuoi semplicemente farmi un saluto? Compila il form qui sotto!
-            </p>
+          {/* TESSERA 2: FOTO PROFILO / AVATAR */}
+          <div className="col-12 col-lg-4">
+            <div className="p-4 bg-body-tertiary border border-secondary border-opacity-25 rounded-4 shadow-sm h-100 d-flex flex-column align-items-center justify-content-center text-center">
+              <div 
+                className="bg-body rounded-circle border border-primary border-3 shadow d-flex align-items-center justify-content-center mb-3" 
+                style={{ width: '150px', height: '150px' }}
+              >
+                <span className="text-body-secondary small">La tua foto</span>
+              </div>
+              <h5 className="fw-bold mb-1">Antonio Verno</h5>
+              <p className="text-body-secondary small mb-1">Dott. in Ingegneria Informatica</p>
+              <span className="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 rounded-pill px-3 py-1">
+                Politecnico di Bari (110)
+              </span>
+            </div>
           </div>
-        </div>
-        <div className="row justify-content-center">
-          <div className="col-md-6">
-            
-            {/* Iniezione del form */}
-            <ContactForm />
 
+          {/* TESSERA 3: TECH STACK COMPLETO */}
+          <div className="col-12 col-md-6 col-lg-4">
+            <div className="p-4 bg-body-tertiary border border-secondary border-opacity-25 rounded-4 shadow-sm h-100">
+              <h5 className="fw-bold mb-3 text-primary">⚡ Competenze Tecniche</h5>
+              <div className="d-flex flex-wrap gap-2">
+                {[
+                  'Java 17/21', 'Spring Boot', 'Angular', 'React', 'Next.js', 
+                  'TypeScript', 'Microservizi', 'Kafka', 'Oracle SQL', 'PostgreSQL', 
+                  'MongoDB', 'Docker', 'OpenShift', 'Jenkins CI/CD', 'GitLab'
+                ].map((tech) => (
+                  <span key={tech} className="badge bg-body border text-body px-2.5 py-2 rounded-3 fs-6 fw-normal">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
+
+          {/* TESSERA 4: CHI SONO & FORMAZIONE */}
+          <div className="col-12 col-md-6 col-lg-5" id="chi-sono">
+            <div className="p-4 bg-body-tertiary border border-secondary border-opacity-25 rounded-4 shadow-sm h-100">
+              <h5 className="fw-bold mb-3 text-primary">🎓 Formazione & Profilo</h5>
+              <p className="text-body-secondary mb-3 leading-relaxed">
+                Laurea Magistrale in Ingegneria Informatica conseguita con <strong>110/110</strong> presso il <strong>Politecnico di Bari</strong>.
+              </p>
+              <p className="text-body-secondary small mb-0">
+                Persona determinata e orientata al problem solving con forte esperienza nella progettazione di architetture distribuite, analisi dati e metodologie Agile/DevOps.
+              </p>
+            </div>
+          </div>
+
+          {/* TESSERA 5: STATS RAPIDE & CLIENT ENTERPRISE */}
+          <div className="col-12 col-lg-3">
+            <div className="p-4 bg-body-tertiary border border-secondary border-opacity-25 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
+              <div>
+                <div className="fs-1 fw-bold text-primary mb-0">110/110</div>
+                <div className="text-body-secondary small fw-medium mb-3">Laurea Magistrale Poliba</div>
+              </div>
+              <div>
+                <div className="text-body-secondary small fw-bold text-uppercase mb-2">Progetti Enterprise:</div>
+                <div className="d-flex flex-wrap gap-1">
+                  <span className="badge-enterprise small">Poste Italiane</span>
+                  <span className="badge-enterprise small">WindTre</span>
+                  <span className="badge-enterprise small">Maserati</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* TESSERA ESPERIENZE LAVORATIVE */}
+          <div className="col-12" id="esperienze">
+            <div className="p-4 p-md-5 bg-body-tertiary border border-secondary border-opacity-25 rounded-4 shadow-sm">
+              <h3 className="display-6 fw-bold mb-4">💼 Esperienza Lavorativa</h3>
+              <div className="row g-4">
+                
+                <div className="col-12 col-md-6">
+                  <div className="p-4 bg-body border border-secondary border-opacity-10 rounded-4 h-100">
+                    <div className="d-flex justify-content-between align-items-center mb-2">
+                      <span className="badge bg-primary px-3 py-2 rounded-pill">2025 - Attuale</span>
+                      <span className="text-body-secondary small">Canosa di Puglia</span>
+                    </div>
+                    <h5 className="fw-bold mb-1">Consulente IT – Full Stack Developer</h5>
+                    <p className="text-primary fw-semibold small mb-3">EliteDivision</p>
+                    <p className="text-body-secondary small mb-0 leading-relaxed">
+                      Sviluppo software enterprise in Java 17/21 (Spring Boot) e Angular 10. Gestione database Oracle SQL, pipeline Jenkins CI/CD, test integrati e piattaforma Appian.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="col-12 col-md-6">
+                  <div className="p-4 bg-body border border-secondary border-opacity-10 rounded-4 h-100">
+                    <div className="d-flex justify-content-between align-items-center mb-2">
+                      <span className="badge bg-secondary px-3 py-2 rounded-pill">2022 - 2025</span>
+                      <span className="text-body-secondary small">Bari</span>
+                    </div>
+                    <h5 className="fw-bold mb-1">Analyst Consultant</h5>
+                    <p className="text-primary fw-semibold small mb-3">Capgemini</p>
+                    <p className="text-body-secondary small mb-0 leading-relaxed">
+                      Sviluppo Full Stack e microservizi per clienti enterprise (Poste Italiane, WindTre, Maserati). Spring Boot, Quarkus, Kafka, Docker, OpenShift e PostgreSQL/MongoDB.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          {/* TESSERA PROGETTI GITHUB */}
+          <div className="col-12" id="progetti">
+            <div className="p-4 p-md-5 bg-body-tertiary border border-secondary border-opacity-25 rounded-4 shadow-sm">
+              <h3 className="display-6 fw-bold mb-4">🚀 I Miei Progetti GitHub</h3>
+              <GithubProjects />
+            </div>
+          </div>
+
+          {/* TESSERA CONTATTI */}
+          <div className="col-12" id="contatti">
+            <div className="p-4 p-md-5 bg-body-tertiary border border-secondary border-opacity-25 rounded-4 shadow-sm">
+              <div className="row g-4 align-items-center">
+                <div className="col-12 col-lg-5">
+                  <h3 className="display-6 fw-bold mb-3">📬 Parliamo!</h3>
+                  <p className="fs-5 text-body-secondary mb-4">
+                    Sei un recruiter o hai una proposta lavorativa/progetto? Inviami un messaggio!
+                  </p>
+                  <div className="d-flex flex-column gap-3 text-body-secondary fs-6">
+                    <div className="d-flex align-items-center gap-2">
+                      <span className="fs-5">📍</span> Canosa di Puglia, Italia
+                    </div>
+                    <div className="d-flex align-items-center gap-2">
+                      <span className="fs-5">✉️</span> anto.verno@gmail.com
+                    </div>
+                    <div className="d-flex align-items-center gap-2">
+                      <span className="fs-5">📞</span> +39 327 4067422
+                    </div>
+                  </div>
+
+                  {/* LINK SOCIAL */}
+                  <div className="d-flex gap-2 mt-4">
+                    <a href="https://github" target="_blank" rel="noreferrer" className="btn btn-sm btn-outline-secondary rounded-pill px-3 fw-semibold">
+                      🐱 GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/antonio-vern%C3%B2-980067231/" target="_blank" rel="noreferrer" className="btn btn-sm btn-outline-primary rounded-pill px-3 fw-semibold">
+                      💼 LinkedIn
+                    </a>
+                  </div>
+
+                </div>
+                <div className="col-12 col-lg-7">
+                  <div className="p-3 p-md-4 bg-body border border-secondary border-opacity-10 rounded-4">
+                    <ContactForm />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
-      </section>
+        {/* ==================== FINE BENTO GRID ==================== */}
+
+      </main>
 
       {/* FOOTER */}
-      <footer className="bg-dark text-white text-center py-4 mt-5">
-        <div className="container">
-          <p className="mb-0">© {new Date().getFullYear()} Antonio Verno. Tutti i diritti riservati.</p>
+      <footer className="border-top border-secondary border-opacity-25 py-4 mt-5">
+        <div className="container-bento px-3 px-md-4 text-center text-body-secondary fs-6">
+          <p className="mb-0">© {new Date().getFullYear()} Dott. Antonio Verno. Tutti i diritti riservati.</p>
         </div>
       </footer>
+      
       <ChatBot />
     </>
   );

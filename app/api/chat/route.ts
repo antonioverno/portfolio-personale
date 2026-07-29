@@ -1,20 +1,20 @@
-const systemPrompt = `Sei l'assistente virtuale del portfolio di Antonio Verno.
-Rispondi agli utenti in modo professionale, conciso e amichevole.
-Ecco le informazioni sul mio CV:
-- Ruolo: Sviluppatore Software
-- Competenze: JavaScript, React, Next.js, Bootstrap, Git
-- Progetti: Gestione Spese, Meteo App, Portfolio Personale
-- Contatti: Possono usare il form in fondo alla pagina per scrivermi.
-Se ti chiedono cose non relative ad Antonio o alla programmazione, scusati e di' che puoi parlare solo del suo profilo professionale.`;
-
 export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
     const apiKey = process.env.GROQ_API_KEY;
+    const rawSystemPrompt = process.env.SYSTEM_PROMPT;
 
+    // Controllo presenza chiavi d'ambiente
     if (!apiKey) {
       return Response.json({ text: "Chiave GROQ_API_KEY mancante nel file .env.local" }, { status: 500 });
     }
+
+    if (!rawSystemPrompt) {
+      return Response.json({ text: "Variabile SYSTEM_PROMPT mancante nel file .env.local" }, { status: 500 });
+    }
+
+    // Convertiamo le sequenze '\n' della stringa env in reali a capo
+    const systemPrompt = rawSystemPrompt.replace(/\\n/g, '\n');
 
     // Formattazione dei messaggi per l'API compatibile OpenAI/Groq
     const formattedMessages = [

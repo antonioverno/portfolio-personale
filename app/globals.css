@@ -1,0 +1,73 @@
+/* Animazione fluida per le card dei progetti */
+.card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Un piccolo tocco di stile per i pulsanti */
+.btn {
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  transform: scale(1.02);
+}
+
+/* Effetto Bento Box Hover */
+.bg-body-tertiary {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.bg-body-tertiary:hover {
+  border-color: var(--bs-primary) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Ampliamo il contenitore massimo per monitor widescreen */
+.container-bento {
+  max-width: 1440px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Stile Glass & Hover sulle tessere */
+.bg-body-tertiary {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.25s ease !important;
+}
+
+.bg-body-tertiary:hover {
+  transform: translateY(-4px);
+  border-color: rgba(13, 110, 253, 0.4) !important; /* Glow Blu Bootstrap */
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Badge personalizzati per i clienti Enterprise */
+.badge-enterprise {
+  background: rgba(13, 110, 253, 0.08);
+  color: var(--bs-primary);
+  border: 1px solid rgba(13, 110, 253, 0.2);
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+/* Ampliamento responsive per schermi grandi */
+@media (min-width: 1400px) {
+  .container-bento {
+    max-width: 1550px !important;
+  }
+}
+
+/* Rende la griglia dei Progetti GitHub su 2 o 3 colonne */
+#progetti .row {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+  gap: 1.5rem !important;
+}
