@@ -17,25 +17,7 @@
   transform: scale(1.02);
 }
 
-/* Effetto Bento Box Hover */
-.bg-body-tertiary {
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-}
-
-.bg-body-tertiary:hover {
-  border-color: var(--bs-primary) !important;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12) !important;
-}
-
-/* Ampliamo il contenitore massimo per monitor widescreen */
-.container-bento {
-  max-width: 1440px !important;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Stile Glass & Hover sulle tessere */
+/* Effetto Bento Box Hover e Stile Glass */
 .bg-body-tertiary {
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
               box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
@@ -46,6 +28,13 @@
   transform: translateY(-4px);
   border-color: rgba(13, 110, 253, 0.4) !important; /* Glow Blu Bootstrap */
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Ampliamo il contenitore massimo per monitor widescreen */
+.container-bento {
+  max-width: 1440px !important;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Badge personalizzati per i clienti Enterprise */
@@ -72,6 +61,7 @@
   gap: 1.5rem !important;
 }
 
+/* Fix per il posizionamento fisso del ChatBot */
 .chatbot-btn-fixed {
   position: fixed !important;
   bottom: 24px !important;
@@ -84,4 +74,27 @@
   bottom: 95px !important;
   right: 24px !important;
   z-index: 99999 !important;
+}
+
+/* Ottimizzazioni specifiche per Schermi Mobile (< 768px) */
+@media (max-width: 767.98px) {
+  /* Riduce leggermente i titoli principali per una resa perfetta su mobile */
+  h1.display-4 {
+    font-size: 2.2rem !important;
+  }
+  
+  h3.display-6 {
+    font-size: 1.75rem !important;
+  }
+
+  /* Riduce il padding interno per adattarsi allo schermo dello smartphone */
+  .p-4.p-md-5 {
+    padding: 1.25rem !important;
+  }
+
+  /* Pulsanti dell'Hero a larghezza piena per facilitare il tap */
+  .col-12 .d-flex.flex-wrap.gap-3 a {
+    width: 100%;
+    text-align: center;
+  }
 }
